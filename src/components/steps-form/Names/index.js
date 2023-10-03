@@ -1,15 +1,33 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../../../style/form-steps.css'
 import MuiProgress from '../../MuiProgress';
 import AOS from "aos";
 
-function Names({ formData, setForm, navigation }) {
+function Names({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
 
     useEffect(() => {
         AOS.init();
     }, []);
 
     const { firstName, lastName, nickname } = formData;
+
+    const [inputValue, setInputValue] = useState(firstName);
+
+    function handleChange(event) {
+      const newValue = event.target.value;
+
+      if (newValue === "" && inputValue !== "") {
+        setCompletingPercent(completingPercent - 10);
+      } else if (newValue !== "" && inputValue === "") {
+        setCompletingPercent(completingPercent + 10);
+      }
+      setInputValue(newValue);
+    }
+
+    const handleMultipleChange = (event) => {
+      handleChange(event);
+      setForm(event);
+    };
 
     return (
       <>
@@ -19,26 +37,20 @@ function Names({ formData, setForm, navigation }) {
                     <img className='logo' src={"../../../../logo.png"} alt={"logo"} />
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
-                  <h1>Names</h1>
                   <div>
-                    <label>FirstName :</label>
-                    <input onChange={setForm} name="firstName" value={firstName} />
-                  </div>
-                  <div>
-                    <label>LastName :</label>
-                    <input onChange={setForm} name="lastName" value={lastName} />
-                  </div>
-                  <div>
-                    <label>Nickname :</label>
-                    <input onChange={setForm} name="nickname" value={nickname} />
+                    <label className='inp-label'>
+                      <span className='label-head-num'>1</span><svg fill='blue' height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Adınız və soyadınız <span className='required-secs'>*</span>
+                    </label>
+                    <br></br>
+                    <input placeholder='Adinizi qeyd edin' className='data-input' onChange={handleMultipleChange} name="firstName" value={firstName} required />
                   </div>
                 </div>
                 <div className='progress-bar'>
                     <div className='progress-percent'>
                             <div>
-                                <p>50% completed</p>
+                                <p>{completingPercent} completed</p>
                                 <div className='mui-progress-item'>
-                                    <MuiProgress />
+                                    <MuiProgress value={completingPercent} />
                                 </div>
                             </div>
                     </div>

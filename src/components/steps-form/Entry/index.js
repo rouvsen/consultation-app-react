@@ -3,7 +3,7 @@ import '../../../style/form-steps.css'
 import MuiProgress from '../../MuiProgress';
 import AOS from "aos";
 
-function Entry({ formData, setForm, navigation }) {
+function Entry({ formData, setForm, navigation, completingPercent }) {
 
     useEffect(() => {
         AOS.init();
@@ -33,9 +33,9 @@ function Entry({ formData, setForm, navigation }) {
                 <div className='progress-bar'>
                     <div className='progress-percent'>
                             <div>
-                                <p>50% completed</p>
+                                <p>0% completed</p>
                                 <div className='mui-progress-item'>
-                                    <MuiProgress />
+                                    <MuiProgress value={completingPercent} />
                                 </div>
                             </div>
                     </div>

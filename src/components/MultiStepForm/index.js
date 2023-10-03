@@ -5,6 +5,7 @@ import Entry from '../steps-form/Entry';
 import Address from '../steps-form/Address';
 import Review from '../steps-form/Review';
 import Contact from '../steps-form/Contact';
+import { useState } from 'react';
 
 const defaultData = {
   firstName: '',
@@ -33,8 +34,9 @@ function MultiStepForm() {
       steps,
       initialStep: 0
     })
+    const [completingPercent, setCompletingPercent] = useState(0);
 
-    const props = { formData, setForm, navigation }
+    const props = { formData, setForm, navigation, completingPercent, setCompletingPercent }
 
     switch(step.id) {
       case 'entry':

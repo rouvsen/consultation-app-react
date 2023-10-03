@@ -102,3 +102,40 @@ h4 {
     align-items: center;
     justify-content: center;
 }
+
+.required-secs {
+    color: red;
+}
+.data-input {
+    font-size: 28px;
+    font-weight: 550;
+    margin-top: 17px;
+    color: blue;
+    padding: 27px 2px;
+    height: 2rem;
+    width: 22rem;
+    border: none;
+    outline: none !important;
+    border-bottom: 2px solid blue;
+    background-color: transparent !important;
+    line-height: 1.48;
+}
+.inp-label {
+    font-size: 30px;
+    font-weight: 550;
+    margin-left: -30px;
+}
+.label-head-num {
+    color: blue;
+    font-size: 20px;
+    margin-right: 1px;
+}
+.inp-label svg {
+    margin-right: 4px;
+}
+
+::placeholder {
+    color: blue;
+    font-weight: 100;
+    opacity: .6;
+}

@@ -1,15 +1,33 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../../../style/form-steps.css'
 import MuiProgress from '../../MuiProgress';
 import AOS from "aos";
 
-function Address({ formData, setForm, navigation }) {
+function Names({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
 
     useEffect(() => {
-      AOS.init();
+        AOS.init();
     }, []);
 
-    const { address, city, state, zip } = formData;
+    const { address } = formData;
+
+    const [inputValue, setInputValue] = useState(address);
+
+    function handleChange(event) {
+      const newValue = event.target.value;
+
+      if (newValue === "" && inputValue !== "") {
+        setCompletingPercent(completingPercent - 10);
+      } else if (newValue !== "" && inputValue === "") {
+        setCompletingPercent(completingPercent + 10);
+      }
+      setInputValue(newValue);
+    }
+
+    const handleMultipleChange = (event) => {
+      handleChange(event);
+      setForm(event);
+    };
 
     return (
       <>
@@ -19,30 +37,20 @@ function Address({ formData, setForm, navigation }) {
                     <img className='logo' src={"../../../../logo.png"} alt={"logo"} />
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
-                    <h1>Address</h1>
-                    <div>
-                      <label>Address :</label>
-                      <input onChange={setForm} name="address" value={address} />
-                    </div>
-                    <div>
-                      <label>City :</label>
-                      <input onChange={setForm} name="city" value={city} />
-                    </div>
-                    <div>
-                      <label>State :</label>
-                      <input onChange={setForm} name="state" value={state} />
-                    </div>
-                    <div>
-                      <label>Zip :</label>
-                      <input onChange={setForm} name="zip" value={zip} />
-                    </div>
+                  <div>
+                    <label className='inp-label'>
+                      <span className='label-head-num'>2</span><svg fill='blue' height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Adresiniz <span className='required-secs'>*</span>
+                    </label>
+                    <br></br>
+                    <input placeholder='Adresinizi qeyd edin' className='data-input' onChange={handleMultipleChange} name="address" value={address} required />
                   </div>
+                </div>
                 <div className='progress-bar'>
                     <div className='progress-percent'>
                             <div>
-                                <p>50% completed</p>
+                                <p>{completingPercent} completed</p>
                                 <div className='mui-progress-item'>
-                                    <MuiProgress />
+                                    <MuiProgress value={completingPercent} />
                                 </div>
                             </div>
                     </div>
@@ -53,8 +61,8 @@ function Address({ formData, setForm, navigation }) {
                 </div>
             </div>
           </div>
-      </>
+        </>
     );
   }
   
-  export default Address;
+  export default Names;

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import '../../../style/form-steps.css'
-import MuiProgress from '../../MuiProgress';
 import AOS from "aos";
 
 function Review({ formData, setForm, navigation }) {
@@ -9,7 +8,24 @@ function Review({ formData, setForm, navigation }) {
       AOS.init();
     }, []);
 
-    const name = formData.firstName === null ? 'Muracietci' : formData.firstName; //TODO: inform yourself.
+    const { firstName, address, phone } = formData;
+
+    fetch('http://localhost:8080/api/informations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstName,
+        address,
+        phone
+      })
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.log(error))
+
+    const name = formData.firstName === null ? 'Muracietci' : formData.firstName;
 
     return (
       <>
