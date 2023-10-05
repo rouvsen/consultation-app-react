@@ -24,7 +24,7 @@ function Review({ formData, setForm, navigation }) {
 
     return (
       <>
-        <div className='container' style={{backgroundColor: 'aqua'}}>
+        <div className='container'>
             <div className='entry-main-section'>
                 <div className='img-div' style={{justifyContent: 'center'}}>
                     <img className='logo' src={"../../../../logo.png"} alt={"logo"} />
