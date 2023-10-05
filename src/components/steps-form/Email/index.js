@@ -3,16 +3,15 @@ import '../../../style/form-steps.css'
 import MuiProgress from '../../MuiProgress';
 import AOS from "aos";
 
-function Names({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
+function Email({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
 
     useEffect(() => {
         AOS.init();
-        checkInput();
     }, []);
 
-    const { firstName, lastName, nickname } = formData;
+    const { email } = formData;
 
-    const [inputValue, setInputValue] = useState(firstName);
+    const [inputValue, setInputValue] = useState(email);
 
     function checkInput() {
       const div = document.getElementsByClassName("show-btns")[0];
@@ -62,10 +61,10 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
                   <div>
                     <label className='inp-label'>
-                      <span className='label-head-num'>1</span><svg fill='blue' height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Adınız və soyadınız <span className='required-secs'>*</span>
+                      <span className='label-head-num'>2</span><svg fill='blue' height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Əla! Email ünvanınız <span className='required-secs'>*</span>
                     </label>
                     <br></br>
-                    <input onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Adınızı qeyd edin' className='data-input' onChange={handleMultipleChange} name="firstName" value={firstName} required />
+                    <input onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Email ünvanı qeyd edin' className='data-input' onChange={handleMultipleChange} name="email" value={email} required />
                   </div>
                   <div className='entry-btns-div show-btns'>
                         <button onClick={() => navigation.next()}><span>İrəli</span></button>
@@ -92,4 +91,4 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
     );
   }
   
-  export default Names;
+  export default Email;

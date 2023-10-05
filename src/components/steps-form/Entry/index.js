@@ -17,7 +17,21 @@ function Entry({ formData, setForm, navigation, completingPercent }) {
                     <img className='logo' src={"../../../../logo.png"} alt={"logo"} />
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
-                    <h4>Digital Hands</h4>
+                    <h2 id='entry-header'>
+                    <span>D</span>
+                    <span>i</span>
+                    <span>g</span>
+                    <span>i</span>
+                    <span>t</span>
+                    <span>a</span>
+                    <span>l</span> 
+                    <span> </span>
+                    <span>H</span>
+                    <span>a</span>
+                    <span>n</span>
+                    <span>d</span>
+                    <span>s</span>
+                    </h2>
                     <div>
                         <span id='span-for-p'>
                             <p>

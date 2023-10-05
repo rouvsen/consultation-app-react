@@ -3,17 +3,24 @@ import '../../../style/form-steps.css'
 import MuiProgress from '../../MuiProgress';
 import AOS from "aos";
 
-function Names({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
+function Contact({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
 
     useEffect(() => {
         AOS.init();
     }, []);
 
-    const { phone } = formData;
+    useEffect(() => {
+      console.log(formData);
+    }, [formData]);
 
-    const [inputValue, setInputValue] = useState(phone);
+    const { field } = formData;
 
-    function handleChange(event) {
+    const [inputValue, setInputValue] = useState(field);
+    
+    function handleSelected(event) {
+      setForm(event);
+      const div = document.getElementsByClassName("show-btns")[0];
+      div.style.display = "block";
       const newValue = event.target.value;
 
       if (newValue === "" && inputValue !== "") {
@@ -22,12 +29,8 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
         setCompletingPercent(completingPercent + 10);
       }
       setInputValue(newValue);
-    }
 
-    const handleMultipleChange = (event) => {
-      handleChange(event);
-      setForm(event);
-    };
+    }
 
     return (
       <>
@@ -37,17 +40,34 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
                     <img className='logo' src={"../../../../logo.png"} alt={"logo"} />
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
-                  <h1>Contact</h1>
                   <div>
-                    <label>
-                      3<svg height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Elaqe nomreniz</label>
-                    <input onChange={handleMultipleChange} name="phone" value={phone} />
+                    <h3>
+                      Hansı sahə ilə maraqlanırsınız?
+                    </h3>
+                  </div>
+                <div className='radios-div'>
+                  <div>
+                    <input onChange={handleSelected} type="radio" id="a" name="field" value="IT-Programlasdirma" />
+                    <label for="a">İT-Proqramlaşdırma</label>
+                  </div>
+                  <div>
+                    <input onChange={handleSelected} type="radio" id="b" name="field" value="Dizayn" />
+                    <label for="b">Dizayn</label>
+                  </div>
+                  <div>
+                    <input onChange={handleSelected} type="radio" id="c" name="field" value="Marketinq" />
+                    <label for="c">Marketinq</label>
+                  </div>
+                </div>
+                  <div className='entry-btns-div show-btns' style={{margin: '0 auto'}}>
+                        <button onClick={() => navigation.next()}><span>İrəli</span></button>
+                        <a onClick={() => navigation.next()} href={"#"}>Enter <b>klikləyin ↵</b></a>
                   </div>
                 </div>
                 <div className='progress-bar'>
                     <div className='progress-percent'>
                             <div>
-                                <p>{completingPercent} completed</p>
+                                <p>{completingPercent}% completed</p>
                                 <div className='mui-progress-item'>
                                     <MuiProgress value={completingPercent} />
                                 </div>
@@ -64,4 +84,4 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
     );
   }
   
-  export default Names;
+  export default Contact;

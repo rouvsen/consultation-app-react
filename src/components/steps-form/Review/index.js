@@ -1,42 +1,37 @@
 import { useEffect } from 'react';
 import '../../../style/form-steps.css'
 import AOS from "aos";
+import axios from "axios";
 
 function Review({ formData, setForm, navigation }) {
 
     useEffect(() => {
       AOS.init();
+
+      axios.post("http://localhost:8080/api/informations", formData)
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      
     }, []);
 
-    const { firstName, address, phone } = formData;
-
-    fetch('http://localhost:8080/api/informations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        firstName,
-        address,
-        phone
-      })
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.log(error))
-
-    const name = formData.firstName === null ? 'Muracietci' : formData.firstName;
+    const name = formData.firstName;
+    const smile = ':)';
 
     return (
       <>
-        <div className='container'>
+        <div className='container' style={{backgroundColor: 'aqua'}}>
             <div className='entry-main-section'>
-                <div className='img-div'>
+                <div className='img-div' style={{justifyContent: 'center'}}>
                     <img className='logo' src={"../../../../logo.png"} alt={"logo"} />
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
-                  <h1 style={{textAlign: 'center', color: 'blue', fontSize: '30px'}}>Hormetli {name} bey/xanim. Siz Digital Hands online konsultasiya xidmetinden istifade ederek muracietinizi tamamladiniz</h1>
-                  <h4>Email-inizi yoxlayin..</h4>
+                  <h1 style={{textAlign: 'center', color: 'blue', fontSize: '30px'}}>Müraciətiniz üçün təşəkkür edirik! <span style={{color: 'red'}}>{name}</span> {smile}</h1>
+                  <p style={{fontSize: '23px', textAlign: 'center'}}>Ən qısa zamanda sizinlə əlaqə yaradacağıq.</p>
                 </div>
             </div>
           </div>

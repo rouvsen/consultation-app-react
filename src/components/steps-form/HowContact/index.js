@@ -3,40 +3,24 @@ import '../../../style/form-steps.css'
 import MuiProgress from '../../MuiProgress';
 import AOS from "aos";
 
-function Names({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
+function HowContact({ formData, setForm, navigation, completingPercent, setCompletingPercent }) {
 
     useEffect(() => {
         AOS.init();
-        checkInput();
     }, []);
 
-    const { firstName, lastName, nickname } = formData;
+    useEffect(() => {
+      console.log(formData);
+    }, [formData]);
 
-    const [inputValue, setInputValue] = useState(firstName);
+    const { howContact } = formData;
 
-    function checkInput() {
+    const [inputValue, setInputValue] = useState(howContact);
+    
+    function handleSelected(event) {
+      setForm(event);
       const div = document.getElementsByClassName("show-btns")[0];
-      const button = document.getElementById('btn-next');
-      if(inputValue !== "") {
-        div.style.display = "block";
-        button.style.pointerEvents = ''; // Enable button
-        return;
-      } 
-      div.style.display = "none";
-      button.style.pointerEvents = 'none'; // Disable button
-    }
-
-    function klickEvent(event) {
-      const button = document.getElementById('btn-next');
-      if(event.keyCode === 13) {
-        event.preventDefault(); // Prevent default behavior
-        if(!button.style.pointerEvents === 'none') navigation.next(); // Go to next page only if button is enabled
-      } if(event.keyCode === 13 && inputValue !== "") {
-        navigation.next();
-      }
-    }
-
-    function handleChange(event) {
+      div.style.display = "block";
       const newValue = event.target.value;
 
       if (newValue === "" && inputValue !== "") {
@@ -45,12 +29,10 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
         setCompletingPercent(completingPercent + 10);
       }
       setInputValue(newValue);
+
     }
 
-    const handleMultipleChange = (event) => {
-      handleChange(event);
-      setForm(event);
-    };
+    const whatever = 'Sms (wp)';
 
     return (
       <>
@@ -61,13 +43,23 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
                   <div>
-                    <label className='inp-label'>
-                      <span className='label-head-num'>1</span><svg fill='blue' height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Adınız və soyadınız <span className='required-secs'>*</span>
-                    </label>
-                    <br></br>
-                    <input onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Adınızı qeyd edin' className='data-input' onChange={handleMultipleChange} name="firstName" value={firstName} required />
+                    <h3>Hansi vasitə ilə sizinlə konsultasiya edə bilərik?</h3>
                   </div>
-                  <div className='entry-btns-div show-btns'>
+                <div className='radios-div'>
+                  <div>
+                    <input onChange={handleSelected} type="radio" id="a" name="howContact" value="Zeng" />
+                    <label for="a">Zəng</label>
+                  </div>
+                  <div>
+                    <input onChange={handleSelected} type="radio" id="b" name="howContact" value="Gorus" />
+                    <label for="b">Görüş</label>
+                  </div>
+                  <div>
+                    <input onChange={handleSelected} type="radio" id="c" name="howContact" value="Sms (wp)" />
+                    <label for="c">{whatever}</label>
+                  </div>
+                </div>
+                  <div className='entry-btns-div show-btns' style={{margin: '0 auto'}}>
                         <button onClick={() => navigation.next()}><span>İrəli</span></button>
                         <a onClick={() => navigation.next()} href={"#"}>Enter <b>klikləyin ↵</b></a>
                   </div>
@@ -83,7 +75,7 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
                     </div>
                     <div className='progress-btns'>
                         <a onClick={() => navigation.previous()} href={"#"}><img src='../../../../up-arrow.svg' /></a>
-                        <a id='btn-next' onClick={() => navigation.next()} href={"#"}><img src='../../../../down-arrow.svg' /></a>
+                        <a onClick={() => navigation.next()} href={"#"}><img src='../../../../down-arrow.svg' /></a>
                     </div>
                 </div>
             </div>
@@ -92,4 +84,4 @@ function Names({ formData, setForm, navigation, completingPercent, setCompleting
     );
   }
   
-  export default Names;
+  export default HowContact;
