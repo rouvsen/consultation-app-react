@@ -88,21 +88,21 @@ function Specif({ formData, setForm, navigation, completingPercent, setCompletin
                   </div>
                   <div>
                     <input onChange={handleSelected} type="radio" id="m" name="fieldSpec" value="Mehsul Dizayn" />
-                    <label for="m">Mehsul Dizayn</label>
+                    <label for="m">Məhsul Dizayn</label>
                   </div>
                 </div>
                 <div className='radios-div' id='marketing' style={{display: 'none'}}>
                   <div>
                     <input onChange={handleSelected} type="radio" id="p" name="fieldSpec" value="Enenevi Marketinq" />
-                    <label for="p">Enenevi Marketinq</label>
+                    <label for="p">Ənənəvi Marketinq</label>
                   </div>
                   <div>
                     <input onChange={handleSelected} type="radio" id="o" name="fieldSpec" value="Reqemsal Marketing" />
-                    <label for="o">Reqemsal Marketing</label>
+                    <label for="o">Rəqəmsal Marketinq</label>
                   </div>
                   <div>
                     <input onChange={handleSelected} type="radio" id="r" name="fieldSpec" value="SMM Telimi" />
-                    <label for="r">SMM Telimi</label>
+                    <label for="r">SMM Təlimi</label>
                   </div>
                 </div>
                   <div className='entry-btns-div show-btns' style={{margin: '0 auto'}}>

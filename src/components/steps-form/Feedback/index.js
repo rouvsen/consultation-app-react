@@ -54,7 +54,7 @@ function Feedback({ formData, setForm, navigation, completingPercent, setComplet
                     <h3 style={{fontSize: '29px'}}>Bizə şərh və ya iradınızı bildirə bilərsiniz</h3>
                     <input onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Ürək sözləriniz' className='data-input' onChange={handleMultipleChange} name="feedback" value={feedback} required />
                   </div>
-                  <div className='entry-btns-div show-btns'>
+                  <div className='entry-btns-div show-btns' style={{marginRight: '20.7rem'}}>
                         <button onClick={() => navigation.next()}><span>İrəli</span></button>
                         <a onClick={() => navigation.next()} href={"#"}>Enter <b>klikləyin ↵</b></a>
                   </div>
