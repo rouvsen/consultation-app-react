@@ -30,8 +30,7 @@ function Review({ formData, setForm, navigation }) {
                     <img className='logo' src={"../../../../logo.png"} alt={"logo"} />
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
-                  <h1 style={{textAlign: 'center', color: 'blue', fontSize: '30px'}}>Müraciətiniz üçün təşəkkür edirik! <span style={{color: 'red'}}>{name}</span> {smile}</h1>
-                  <p style={{fontSize: '23px', textAlign: 'center'}}>Ən qısa zamanda sizinlə əlaqə yaradacağıq.</p>
+                  <h1 style={{textAlign: 'center', color: 'blue', fontSize: '30px'}}>Axır ki bitdi, hə? <span style={{color: 'red'}}>{name}</span> {smile}</h1>
                 </div>
             </div>
           </div>

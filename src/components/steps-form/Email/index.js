@@ -64,7 +64,7 @@ function Email({ formData, setForm, navigation, completingPercent, setCompleting
                       <span className='label-head-num'>2</span><svg fill='blue' height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Əla! Email ünvanınız <span className='required-secs'>*</span>
                     </label>
                     <br></br>
-                    <input onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Email ünvanı qeyd edin' className='data-input' onChange={handleMultipleChange} name="email" value={email} required />
+                    <input type='email' onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Email ünvanı qeyd edin' className='data-input' onChange={handleMultipleChange} name="email" value={email} required />
                   </div>
                   <div className='entry-btns-div show-btns'>
                         <button onClick={() => navigation.next()}><span>İrəli</span></button>
