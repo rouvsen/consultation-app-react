@@ -57,7 +57,7 @@ function Specif({ formData, setForm, navigation, completingPercent, setCompletin
                 </div>
                 <div data-aos="fade-up" data-aos-duration="800" className='entry-content-section'>
                   <div id='nonSelected' style={{display: 'none'}}>
-                    <h3 style={{color: 'red', fontSize: '30px'}}>İxtisas olaraq seçim etmədiniz ..</h3>
+                    <h3 style={{color: 'red', fontSize: '30px', marginLeft: '3px'}}>İxtisas olaraq seçim etmədiniz ..</h3>
                   </div>
                 <div className='radios-div' id='programming' style={{display: 'none'}}>
                   <div>
