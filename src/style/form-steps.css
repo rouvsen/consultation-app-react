@@ -41,6 +41,9 @@ h4 {
 }
 .entry-btns-div {
     margin-top: 1.85rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .entry-btns-div button {
     cursor: pointer;
