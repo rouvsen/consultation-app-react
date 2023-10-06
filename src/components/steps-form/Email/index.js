@@ -18,7 +18,7 @@ function Email({ formData, setForm, navigation, completingPercent, setCompleting
   function checkInput() {
     const div = document.getElementsByClassName("show-btns")[0];
     const button = document.getElementById('btn-next');
-    if(inputValue !== "") {
+    if(inputValue !== "" && emailIsValid) {
       div.style.display = "block";
       button.style.pointerEvents = ''; // Enable button
       return;
