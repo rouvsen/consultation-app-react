@@ -55,7 +55,7 @@ function Age({ formData, setForm, navigation, completingPercent, setCompletingPe
                       <span className='label-head-num'>2</span><svg fill='blue' height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg>Yaşınız
                     </label>
                     <br></br>
-                    <input onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Yaşınızı qeyd edin' className='data-input' onChange={handleMultipleChange} name="age" value={age} required />
+                    <input type='number' onKeyDown={klickEvent} onKeyUp={checkInput} placeholder='Yaşınızı qeyd edin' className='data-input' onChange={handleMultipleChange} name="age" value={age} required />
                   </div>
                   <div className='entry-btns-div show-btns'>
                         <button onClick={() => navigation.next()}><span>İrəli</span></button>
